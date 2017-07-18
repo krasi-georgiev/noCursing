@@ -9,3 +9,10 @@ figlet - display video or text on the pi - this TV doens't tolerate cursing , pl
 
 	Watch file changes and run an API call
 		??? if the file is smaller than ... don't run an api call , most likely empty , this might  not work with different microphone volumes
+
+Without this it connects and disconnects
+	apt-get install pulseaudio pulseaudio-module-bluetooth pavucontrol
+	service bluetooth restart
+	killall pulseaudio
+
+Iunstal portaudio libs `apt-get install portaudio19-dev`

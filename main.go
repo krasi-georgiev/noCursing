@@ -75,8 +75,12 @@ func main() {
 
 			var startSend bool
 			for k, v := range bufMic {
-
 				start := k * 4
+
+				fmt.Println(v)
+				if v != 0 {
+					v = 255
+				}
 				binary.BigEndian.PutUint32(bufGoogle[start:start+4], uint32(v))
 				if v != 0 {
 					startSend = true
@@ -89,8 +93,8 @@ func main() {
 			// fmt.Println("bit")
 
 			if startSend {
-				fmt.Println("Sending")
-				fmt.Println(bufGoogle)
+				// fmt.Println("Sending")
+				// fmt.Println(bufGoogle)
 				if err = stream.Send(&speechpb.StreamingRecognizeRequest{
 					StreamingRequest: &speechpb.StreamingRecognizeRequest_AudioContent{
 						AudioContent: bufGoogle[:],
